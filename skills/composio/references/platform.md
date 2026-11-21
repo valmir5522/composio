@@ -52,6 +52,16 @@ composio login
 composio dev init
 ```
 
+On Windows (PowerShell, native installer, no bash / WSL required):
+
+```powershell
+irm https://raw.githubusercontent.com/ComposioHQ/composio/next/install.ps1 | iex
+composio login
+composio dev init
+```
+
+Do not run `curl -fsSL https://composio.dev/install | bash` on Windows: `curl` is only a PowerShell alias for `Invoke-WebRequest`, and there is no `bash` to pipe into. Windows support is experimental: installation, `composio run`, `composio upgrade`, and `composio setup` are tested on Windows; other commands may not work yet.
+
 `composio dev init` writes `COMPOSIO_API_KEY` and `COMPOSIO_TEST_USER_ID` to `.env.local`. Python dotenv does not load `.env.local` by default, so pass the path explicitly or move the variables through the project's normal secret mechanism. There is no bare `composio init` command.
 
 Verification stamp: these commands were exercised against CLI 0.2.32 and 0.3.1 on 2026-08-06. If the installed version differs or behavior conflicts, check `composio dev --help` and current docs rather than forcing the stamped behavior.
